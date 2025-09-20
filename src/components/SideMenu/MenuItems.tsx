@@ -15,9 +15,9 @@ export const MenuItems = () => {
         const { icon: Icon, hasSubMenu, link, name } = item;
 
         return (
-          <Flex key={item.name}>
+          <Flex key={name}>
             <Button
-              onClick={() => navigate(item.link)}
+              onClick={() => navigate(link)}
               w="100%"
               justifyContent="flex-start"
               fontWeight={500}
@@ -38,8 +38,8 @@ export const MenuItems = () => {
             >
               <Flex w="100%" gap={rem(14)} align="center">
                 <Icon fill={isActive ? "white" : "#9197B3"} />
-                {item.name}
-                {item.hasSubMenu && (
+                {name}
+                {hasSubMenu && (
                   <Box as="span" ml="auto">
                     <BiChevronRight />
                   </Box>

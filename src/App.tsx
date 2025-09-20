@@ -20,9 +20,9 @@ export const App = () => {
     setTimeout(() => {
       setUser(mockLoggedInUser);
     }, 500); // Simulate API delay
-  }, []);
+  }, [setUser]);
 
-  useEffect(() => fetchUser(), []);
+  useEffect(() => fetchUser(), [fetchUser]);
 
   return (
     <BrowserRouter>

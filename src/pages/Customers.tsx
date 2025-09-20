@@ -3,6 +3,3 @@ const Customers = () => {
 };
 
 export default Customers;
-
-/* <Earning />
-<Product /> */

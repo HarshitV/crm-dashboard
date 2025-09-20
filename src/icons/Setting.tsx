@@ -1,7 +1,4 @@
-import { rem } from "@/utils/rem";
-import { Icon, IconProps } from "@chakra-ui/react";
-
-export const Setting = (props: IconProps) => (
+export const Setting = () => (
   <svg width="37" height="37" fill="none">
     <path
       fill="#000"

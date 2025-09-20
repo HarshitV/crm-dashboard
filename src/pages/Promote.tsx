@@ -1,3 +1,3 @@
- const Promote = () => <>Promote Page</>;
-import React from "react";
+const Promote = () => <>Promote Page</>;
+
 export default Promote;
