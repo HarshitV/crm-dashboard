@@ -7,6 +7,7 @@ import { Setting } from "@/icons/Setting";
 export const SideMenu = () => {
   return (
     <Box
+      display={{ base: "none", md: "block" }}
       w="40%"
       h="100vh"
       bg="white"
@@ -17,7 +18,7 @@ export const SideMenu = () => {
       top={0}
       left={0}
       color="black"
-      minW={rem(210)}
+      minW={rem(260)}
       maxW={rem(306)}
       overflowY="auto"
     >

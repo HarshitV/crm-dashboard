@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Global
         styles={{
           body: {
-            backgroundColor: "white",
+            backgroundColor: "#FAFBFF",
             color: "#000000",
             overflow: "hidden",
           },
