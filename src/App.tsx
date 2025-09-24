@@ -28,7 +28,7 @@ export const App = () => {
     <BrowserRouter>
       <Flex>
         <SideMenu />
-        <Flex direction="column" flex="1" p={4}>
+        <Flex direction="column" flex="1">
           <Routes>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/product" element={<Product />} />
