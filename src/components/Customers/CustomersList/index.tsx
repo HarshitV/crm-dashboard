@@ -6,7 +6,7 @@ import {
   usePaginatedCustomers,
 } from "../useCustomerTableHooks";
 import { Box, Flex, Text, Table, TableBody, TableRow } from "@chakra-ui/react";
-import { mockCustomers } from "../../../data/mockCustomers";
+import { Customer, mockCustomers } from "../../../data/mockCustomers";
 import { rem } from "@/utils/rem";
 import { Header } from "./Header";
 import { Pagination } from "@/components/ui/Pagination";
@@ -87,44 +87,42 @@ export const CustomersList = () => {
                 </Table.Cell>
               </Table.Row>
             ) : (
-              paginated.map(
-                (c: import("../../../data/mockCustomers").Customer) => (
-                  <TableRow
-                    key={c.id}
-                    _hover={{ bg: "gray.50" }}
-                    transition="background 0.2s"
-                  >
-                    <Table.Cell fontWeight={500}>{c.name}</Table.Cell>
-                    <Table.Cell display={{ base: "none", lg: "table-cell" }}>
-                      {c.company}
-                    </Table.Cell>
-                    <Table.Cell display={{ base: "none", md: "table-cell" }}>
-                      {c.phone}
-                    </Table.Cell>
-                    <Table.Cell display={{ base: "none", xl: "table-cell" }}>
-                      {c.email}
-                    </Table.Cell>
-                    <Table.Cell display={{ base: "none", xl: "table-cell" }}>
-                      {c.country}
-                    </Table.Cell>
-                    <Table.Cell>
-                      <Flex
-                        justify="center"
-                        align="center"
-                        borderRadius={rem(4)}
-                        w={rem(80)}
-                        h={rem(30)}
-                        fontWeight={500}
-                        fontSize={rem(14)}
-                        bg={c.status === "active" ? "#16C09861" : "#FFC5C5"}
-                        color={c.status === "active" ? "#008767" : "#DF0404"}
-                      >
-                        {c.status.charAt(0).toUpperCase() + c.status.slice(1)}
-                      </Flex>
-                    </Table.Cell>
-                  </TableRow>
-                )
-              )
+              paginated.map((c: Customer) => (
+                <TableRow
+                  key={c.id}
+                  _hover={{ bg: "gray.50" }}
+                  transition="background 0.2s"
+                >
+                  <Table.Cell fontWeight={500}>{c.name}</Table.Cell>
+                  <Table.Cell display={{ base: "none", lg: "table-cell" }}>
+                    {c.company}
+                  </Table.Cell>
+                  <Table.Cell display={{ base: "none", md: "table-cell" }}>
+                    {c.phone}
+                  </Table.Cell>
+                  <Table.Cell display={{ base: "none", xl: "table-cell" }}>
+                    {c.email}
+                  </Table.Cell>
+                  <Table.Cell display={{ base: "none", xl: "table-cell" }}>
+                    {c.country}
+                  </Table.Cell>
+                  <Table.Cell>
+                    <Flex
+                      justify="center"
+                      align="center"
+                      borderRadius={rem(4)}
+                      w={rem(80)}
+                      h={rem(30)}
+                      fontWeight={500}
+                      fontSize={rem(14)}
+                      bg={c.status === "active" ? "#16C09861" : "#FFC5C5"}
+                      color={c.status === "active" ? "#008767" : "#DF0404"}
+                    >
+                      {c.status.charAt(0).toUpperCase() + c.status.slice(1)}
+                    </Flex>
+                  </Table.Cell>
+                </TableRow>
+              ))
             )}
           </TableBody>
         </Table.Root>

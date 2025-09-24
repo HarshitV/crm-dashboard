@@ -24,7 +24,7 @@ export const Pagination = ({
         bg="#F5F5F5"
         color="#404B52"
         fontSize={rem(12)}
-        fontWeight={rem(500)}
+        fontWeight="500"
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
       >
@@ -38,7 +38,7 @@ export const Pagination = ({
             bg={currentPage === page ? "#5A32EA" : "#F5F5F5"}
             color={currentPage === page ? "#fff" : "#404B52"}
             fontSize={rem(12)}
-            fontWeight={rem(500)}
+            fontWeight="500"
             onClick={() => onPageChange(page)}
           >
             {page}
@@ -60,7 +60,7 @@ export const Pagination = ({
         bg="#F5F5F5"
         color="#404B52"
         fontSize={rem(12)}
-        fontWeight={rem(500)}
+        fontWeight="500"
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
       >
