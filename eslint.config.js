@@ -5,6 +5,12 @@ const reactHooks = require("eslint-plugin-react-hooks");
 
 module.exports = [
   {
+    ignores: [
+      "dist/**",
+      "eslint.config.js",
+      "webpack.config.js",
+      "tsconfig.json",
+    ],
     files: ["**/*.{ts,tsx,js,jsx}"],
     languageOptions: {
       parser: tsParser,
@@ -20,13 +26,9 @@ module.exports = [
       react,
       "react-hooks": reactHooks,
     },
-    ignorePatterns: ["webpack.config.js"],
     rules: {
-      // TypeScript rules
       ...tsPlugin.configs.recommended.rules,
-      // React rules
       ...react.configs.recommended.rules,
-      // React Hooks rules
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "react/react-in-jsx-scope": "off",
