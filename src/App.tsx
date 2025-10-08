@@ -26,7 +26,7 @@ export const App = () => {
 
   return (
     <BrowserRouter>
-      <Flex>
+      <Flex h="100%" w="100%">
         <SideMenu />
         <Flex direction="column" flex="1">
           <Routes>

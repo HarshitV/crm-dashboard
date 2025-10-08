@@ -19,6 +19,7 @@ export const Pagination = ({
   return (
     <Flex align="center" gap={2} mt={3} h={rem(24)}>
       <Button
+        size="2xs"
         p={0}
         borderRadius={rem(4)}
         bg="#F5F5F5"
@@ -33,6 +34,8 @@ export const Pagination = ({
       {pages.map((page, idx) =>
         typeof page === "number" ? (
           <Button
+            size="2xs"
+            p={0}
             key={`page-${page}`}
             borderRadius={rem(4)}
             bg={currentPage === page ? "#5A32EA" : "#F5F5F5"}
@@ -55,6 +58,7 @@ export const Pagination = ({
         )
       )}
       <Button
+        size="2xs"
         p={0}
         borderRadius={rem(4)}
         bg="#F5F5F5"

@@ -13,7 +13,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           body: {
             backgroundColor: "#FAFBFF",
             color: "#000000",
-            overflow: "hidden",
+            minWidth: "100vw",
+            width: "fit-content",
+            minHeight: "100vh",
+            height: "fit-content",
           },
           p: {
             marginBottom: "0 !important",
