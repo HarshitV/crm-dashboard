@@ -21,7 +21,6 @@ export const useCustomersList = () => {
   useEffect(() => {
     setLoading(true);
     const timeout = setTimeout(() => {
-      // Simulate API: only return current page's data
       const start = (page - 1) * PAGE_SIZE;
       const end = start + PAGE_SIZE;
       setCustomers(sorted.slice(start, end));

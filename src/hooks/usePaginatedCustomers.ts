@@ -1,5 +1,5 @@
+import { Customer } from "@/data/mockCustomers";
 import { useMemo } from "react";
-import type { Customer } from "../data/mockCustomers";
 
 export function usePaginatedCustomers(
   sorted: Customer[],

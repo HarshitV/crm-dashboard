@@ -1,5 +1,4 @@
 import { Box, Flex, Table, TableBody, TableRow } from "@chakra-ui/react";
-import { Customer } from "../../../data/mockCustomers";
 import { rem } from "@/utils/rem";
 import { Header } from "./Header";
 import { useCustomersList } from "@/hooks/useCustomersList";
@@ -79,7 +78,7 @@ export const CustomersList = () => {
             ) : customers.length === 0 ? (
               <EmptyState />
             ) : (
-              customers.map((c: Customer) => (
+              customers.map((c) => (
                 <TableRow
                   key={c.id}
                   _hover={{ bg: "gray.50" }}

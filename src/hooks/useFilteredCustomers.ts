@@ -12,7 +12,7 @@ export function useFilteredCustomers(
   return useMemo(() => {
     let data = customers;
     if (debouncedSearch) {
-      data = data.filter((c: Customer) =>
+      data = data.filter((c) =>
         [c.name, c.company, c.email, c.phone, c.country]
           .join(" ")
           .toLowerCase()
