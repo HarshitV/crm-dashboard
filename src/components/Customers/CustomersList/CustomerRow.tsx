@@ -8,11 +8,7 @@ export const CustomerRow = React.memo(({ c }: { c: Customer }) => {
   const { bg, color, border, label } = getStatusProps(c.status);
 
   return (
-    <TableRow
-      key={c.id}
-      _hover={{ bg: "gray.50" }}
-      transition="background 0.2s"
-    >
+    <TableRow _hover={{ bg: "gray.50" }} transition="background 0.2s">
       <Table.Cell fontWeight={500}>{c.name}</Table.Cell>
       <Table.Cell display={{ base: "none", lg: "table-cell" }}>
         {c.company}

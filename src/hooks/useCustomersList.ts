@@ -1,5 +1,5 @@
 import { Customer, mockCustomers } from "@/data/mockCustomers";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useFilteredCustomers } from "./useFilteredCustomers";
 import { useSortedCustomers } from "./useSortedCustomers";
 import { PAGE_SIZE } from "@/utils/constants";
@@ -30,16 +30,13 @@ export const useCustomersList = () => {
     return () => clearTimeout(timeout);
   }, [page, sorted]);
 
-  const memoSetSearch = useCallback((v: string) => setSearch(v), [setSearch]);
-  const memoSetStatus = useCallback((v: string) => setStatus(v), [setStatus]);
-  const memoSetSort = useCallback((v: string) => setSort(v), [setSort]);
-  const memoSetPage = useCallback((v: number) => setPage(v), [setPage]);
-
-  const memoCustomers = useMemo(() => customers, [customers]);
-  const memoSorted = useMemo(() => sorted, [sorted]);
+  const memoSetSearch = useCallback((v: string) => setSearch(v), []);
+  const memoSetStatus = useCallback((v: string) => setStatus(v), []);
+  const memoSetSort = useCallback((v: string) => setSort(v), []);
+  const memoSetPage = useCallback((v: number) => setPage(v), []);
 
   return {
-    customers: memoCustomers,
+    customers,
     loading,
     search,
     setSearch: memoSetSearch,
@@ -50,6 +47,6 @@ export const useCustomersList = () => {
     page,
     setPage: memoSetPage,
     totalPages,
-    sorted: memoSorted,
+    sorted,
   };
 };
