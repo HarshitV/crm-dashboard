@@ -2,13 +2,12 @@ import { Pagination } from "@/components/ui/Pagination";
 import { Customer } from "@/data/mockCustomers";
 import { PAGE_SIZE } from "@/utils/constants";
 import { Flex, Text } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
 
 interface Props {
   sorted: Customer[];
   page: number;
   totalPages: number;
-  setPage: Dispatch<SetStateAction<number>>;
+  setPage: (v: number) => void;
 }
 
 export const Footer = ({ sorted, page, totalPages, setPage }: Props) => (

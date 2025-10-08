@@ -1,6 +1,5 @@
 import { rem } from "@/utils/rem";
 import { Flex } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
 import { HeaderLeft } from "./HeaderLeft";
 import { HeaderRight } from "./HeaderRight";
 
@@ -8,10 +7,10 @@ interface Props {
   status: string;
   search: string;
   sort: string;
-  setStatus: Dispatch<SetStateAction<string>>;
-  setSearch: Dispatch<SetStateAction<string>>;
-  setSort: Dispatch<SetStateAction<string>>;
-  setPage: Dispatch<SetStateAction<number>>;
+  setStatus: (v: string) => void;
+  setSearch: (v: string) => void;
+  setSort: (v: string) => void;
+  setPage: (v: number) => void;
 }
 
 export const Header = ({

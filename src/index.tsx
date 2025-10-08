@@ -10,13 +10,15 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <ChakraProvider value={system}>
       <Global
         styles={{
-          body: {
-            backgroundColor: "#FAFBFF",
-            color: "#000000",
+          html: {
             minWidth: "100vw",
             width: "fit-content",
             minHeight: "100vh",
             height: "fit-content",
+          },
+          body: {
+            backgroundColor: "#FAFBFF",
+            color: "#000000",
           },
           p: {
             marginBottom: "0 !important",

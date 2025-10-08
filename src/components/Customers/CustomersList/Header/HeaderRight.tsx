@@ -1,14 +1,13 @@
 import { rem } from "@/utils/rem";
-import { Box, Flex, Input } from "@chakra-ui/react";
-import { Dispatch, SetStateAction } from "react";
+import { Flex, Input } from "@chakra-ui/react";
 import { FiSearch } from "react-icons/fi";
 
 interface Props {
   search: string;
   sort: string;
-  setSearch: Dispatch<SetStateAction<string>>;
-  setSort: Dispatch<SetStateAction<string>>;
-  setPage: Dispatch<SetStateAction<number>>;
+  setSearch: (v: string) => void;
+  setSort: (v: string) => void;
+  setPage: (v: number) => void;
 }
 
 export const HeaderRight = ({
@@ -39,7 +38,7 @@ export const HeaderRight = ({
         _focus={{ boxShadow: "none" }}
       />
     </Flex>
-    <Box
+    <Flex
       flex={1}
       bg="white"
       borderRadius={rem(8)}
@@ -50,8 +49,10 @@ export const HeaderRight = ({
       display={{ base: "none", lg: "block" }}
     >
       <select
+        id="sort"
         style={{
           width: "100%",
+          height: "100%",
           border: "none",
           outline: "none",
           background: "transparent",
@@ -66,6 +67,6 @@ export const HeaderRight = ({
         <option value="name">Sort by Name</option>
         <option value="status">Sort by Status</option>
       </select>
-    </Box>
+    </Flex>
   </Flex>
 );

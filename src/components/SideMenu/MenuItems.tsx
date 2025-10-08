@@ -21,7 +21,7 @@ export const MenuItems = () => {
               w="100%"
               justifyContent="flex-start"
               fontWeight={500}
-              fontSize="16px"
+              fontSize={rem(14)}
               variant={isActive ? "solid" : "ghost"}
               color={isActive ? "white" : "text-secondary"}
               bg={isActive ? "#5932EA" : "transparent"}
