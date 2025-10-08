@@ -44,3 +44,5 @@ export const sideMenuItems = [
     hasSubMenu: true,
   },
 ];
+
+export const PAGE_SIZE = 8;

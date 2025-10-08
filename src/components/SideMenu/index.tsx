@@ -9,12 +9,12 @@ export const SideMenu = () => {
     <Box
       display={{ base: "none", md: "block" }}
       w="40%"
-      h="100vh"
+      h="100%"
       bg="white"
       shadow="md"
       px={rem(28)}
       py={rem(36)}
-      position="relative"
+      position="fixed"
       top={0}
       left={0}
       color="black"

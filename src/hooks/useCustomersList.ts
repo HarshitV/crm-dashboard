@@ -1,0 +1,48 @@
+import { Customer, mockCustomers } from "@/data/mockCustomers";
+import { useEffect, useState } from "react";
+import { useFilteredCustomers } from "./useFilteredCustomers";
+import { useSortedCustomers } from "./useSortedCustomers";
+import { PAGE_SIZE } from "@/utils/constants";
+
+export const useCustomersList = () => {
+  const [search, setSearch] = useState("");
+  const [status, setStatus] = useState("");
+  const [sort, setSort] = useState("newest");
+  const [page, setPage] = useState(1);
+
+  const [customers, setCustomers] = useState<Customer[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Filter and sort all customers first (simulate server-side)
+  const filtered = useFilteredCustomers(mockCustomers, search, status);
+  const sorted = useSortedCustomers(filtered, sort);
+  const totalPages = Math.ceil(sorted.length / PAGE_SIZE);
+
+  useEffect(() => {
+    setLoading(true);
+    const timeout = setTimeout(() => {
+      // Simulate API: only return current page's data
+      const start = (page - 1) * PAGE_SIZE;
+      const end = start + PAGE_SIZE;
+      setCustomers(sorted.slice(start, end));
+      setLoading(false);
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [page, sorted]);
+
+  return {
+    customers, // now only contains current page's data
+    loading,
+    search,
+    setSearch,
+    status,
+    setStatus,
+    sort,
+    setSort,
+    page,
+    setPage,
+    totalPages,
+    sorted,
+  };
+};
