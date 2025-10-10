@@ -17,7 +17,6 @@ export const CustomersDashboard = () => {
   }, []);
 
   if (!items.length) {
-    // Show 3 skeletons to match design
     return <Skeleton minH={rem(150)} borderRadius={rem(30)} />;
   }
 

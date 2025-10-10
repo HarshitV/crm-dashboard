@@ -23,7 +23,6 @@ export const CustomersList = () => {
     sorted,
   } = useCustomersList();
 
-  // const loading = true;
   return (
     <Box bg="white" p={{ base: rem(20), md: rem(32) }} borderRadius={rem(30)}>
       <Header
