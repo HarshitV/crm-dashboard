@@ -10,4 +10,3 @@ export const system = createSystem(defaultConfig, {
     },
   },
 });
-
