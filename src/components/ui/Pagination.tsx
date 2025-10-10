@@ -1,7 +1,9 @@
 import { rem } from "@/utils/rem";
-import { Button, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { usePagination } from "@/hooks/usePagination";
+
+import { PaginationButton } from "./PaginationButton";
 
 type Props = {
   currentPage: number;
@@ -17,35 +19,24 @@ export const Pagination = ({
   const pages = usePagination(currentPage, totalPages);
 
   return (
-    <Flex align="center" gap={2} mt={3} h={rem(24)}>
-      <Button
-        size="2xs"
-        p={0}
-        borderRadius={rem(4)}
-        bg="#F5F5F5"
-        color="#404B52"
-        fontSize={rem(12)}
-        fontWeight="500"
+    <Flex align="center" gap={2} h={rem(24)}>
+      <PaginationButton
         disabled={currentPage === 1}
         onClick={() => onPageChange(currentPage - 1)}
+        aria-label="Previous page"
       >
         <BiChevronLeft />
-      </Button>
+      </PaginationButton>
       {pages.map((page, idx) =>
         typeof page === "number" ? (
-          <Button
-            size="2xs"
-            p={0}
+          <PaginationButton
             key={`page-${page}`}
-            borderRadius={rem(4)}
-            bg={currentPage === page ? "#5A32EA" : "#F5F5F5"}
-            color={currentPage === page ? "#fff" : "#404B52"}
-            fontSize={rem(12)}
-            fontWeight="500"
+            active={currentPage === page}
             onClick={() => onPageChange(page)}
+            aria-label={`Page ${page}`}
           >
             {page}
-          </Button>
+          </PaginationButton>
         ) : (
           <Flex
             key={`ellipsis-${idx}`}
@@ -57,19 +48,13 @@ export const Pagination = ({
           </Flex>
         )
       )}
-      <Button
-        size="2xs"
-        p={0}
-        borderRadius={rem(4)}
-        bg="#F5F5F5"
-        color="#404B52"
-        fontSize={rem(12)}
-        fontWeight="500"
+      <PaginationButton
         disabled={currentPage === totalPages}
         onClick={() => onPageChange(currentPage + 1)}
+        aria-label="Next page"
       >
         <BiChevronRight />
-      </Button>
+      </PaginationButton>
     </Flex>
   );
 };

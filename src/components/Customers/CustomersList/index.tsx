@@ -1,4 +1,4 @@
-import { Box, Table, TableBody } from "@chakra-ui/react";
+import { Box, Skeleton, Table, TableBody } from "@chakra-ui/react";
 import { rem } from "@/utils/rem";
 import { Header } from "./Header";
 import { useCustomersList } from "@/hooks/useCustomersList";
@@ -39,33 +39,43 @@ export const CustomersList = () => {
           <Table.Header>
             <Table.Row>
               <Table.ColumnHeader color="#B5B7C0">
-                Customer Name
+                {loading ? (
+                  <Skeleton height="20px" width="120px" />
+                ) : (
+                  "Customer Name"
+                )}
               </Table.ColumnHeader>
               <Table.ColumnHeader
                 color="#B5B7C0"
                 display={{ base: "none", lg: "table-cell" }}
               >
-                Company
+                {loading ? <Skeleton height="20px" width="100px" /> : "Company"}
               </Table.ColumnHeader>
               <Table.ColumnHeader
                 color="#B5B7C0"
                 display={{ base: "none", md: "table-cell" }}
               >
-                Phone Number
+                {loading ? (
+                  <Skeleton height="20px" width="110px" />
+                ) : (
+                  "Phone Number"
+                )}
               </Table.ColumnHeader>
               <Table.ColumnHeader
                 color="#B5B7C0"
                 display={{ base: "none", xl: "table-cell" }}
               >
-                Email
+                {loading ? <Skeleton height="20px" width="120px" /> : "Email"}
               </Table.ColumnHeader>
               <Table.ColumnHeader
                 color="#B5B7C0"
                 display={{ base: "none", xl: "table-cell" }}
               >
-                Country
+                {loading ? <Skeleton height="20px" width="90px" /> : "Country"}
               </Table.ColumnHeader>
-              <Table.ColumnHeader color="#B5B7C0">Status</Table.ColumnHeader>
+              <Table.ColumnHeader color="#B5B7C0">
+                {loading ? <Skeleton height="20px" width="70px" /> : "Status"}
+              </Table.ColumnHeader>
             </Table.Row>
           </Table.Header>
           <TableBody h={rem(440)}>

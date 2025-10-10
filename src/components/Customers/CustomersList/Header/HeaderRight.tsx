@@ -24,9 +24,11 @@ export const HeaderRight = ({
       borderRadius={rem(10)}
       p={rem(7)}
       w={{ base: rem(150), xl: rem(215) }}
+      _focusWithin={{ boxShadow: "0 0 0 1px #2684FF" }}
     >
       <FiSearch color="#7E7E7E" size={rem(16)} />
       <Input
+        id="customer-search"
         placeholder="Search"
         value={search}
         onChange={(e) => {
@@ -34,8 +36,7 @@ export const HeaderRight = ({
           setPage(1);
         }}
         border="none"
-        boxShadow="none"
-        _focus={{ boxShadow: "none" }}
+        _focusVisible={{ border: "none", outlineWidth: "inherit" }}
       />
     </Flex>
     <Flex
@@ -47,6 +48,7 @@ export const HeaderRight = ({
       py={2}
       fontSize={rem(12)}
       display={{ base: "none", lg: "block" }}
+      _focusWithin={{ boxShadow: "0 0 0 1px #2684FF" }}
     >
       <select
         id="sort"
