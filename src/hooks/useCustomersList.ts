@@ -2,7 +2,7 @@ import { Customer, mockCustomers } from "@/data/mockCustomers";
 import { useCallback, useEffect, useState } from "react";
 import { useFilteredCustomers } from "./useFilteredCustomers";
 import { useSortedCustomers } from "./useSortedCustomers";
-import { PAGE_SIZE } from "@/utils/constants";
+import { MOCK_TIMEOUT_DELAY, PAGE_SIZE } from "@/utils/constants";
 
 export const useCustomersList = () => {
   const [search, setSearch] = useState("");
@@ -25,7 +25,7 @@ export const useCustomersList = () => {
       const end = start + PAGE_SIZE;
       setCustomers(sorted.slice(start, end));
       setLoading(false);
-    }, 500);
+    }, MOCK_TIMEOUT_DELAY);
 
     return () => clearTimeout(timeout);
   }, [page, sorted]);

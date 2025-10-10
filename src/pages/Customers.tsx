@@ -1,7 +1,7 @@
 import { Text, Skeleton } from "@chakra-ui/react";
 
 import { PageWrapper } from "@/components/ui/PageWrapper";
-import { CustomersDashboard } from "@/components/Customers/CustomersDashboard";
+import { CustomersDashboard } from "@/components/Customers/Dashboard";
 import { useUserStore } from "@/store/useUserStore";
 import { rem } from "@/utils/rem";
 import { CustomersList } from "../components/Customers/CustomersList";

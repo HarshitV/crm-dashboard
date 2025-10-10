@@ -46,3 +46,4 @@ export const sideMenuItems = [
 ];
 
 export const PAGE_SIZE = 8;
+export const MOCK_TIMEOUT_DELAY = 500; // in ms

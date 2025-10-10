@@ -27,6 +27,7 @@ export const HeaderRight = ({
     >
       <FiSearch color="#7E7E7E" size={rem(16)} />
       <Input
+        id="customer-search"
         placeholder="Search"
         value={search}
         onChange={(e) => {
@@ -34,8 +35,7 @@ export const HeaderRight = ({
           setPage(1);
         }}
         border="none"
-        boxShadow="none"
-        _focus={{ boxShadow: "none" }}
+        _focusVisible={{ boxShadow: "none" }}
       />
     </Flex>
     <Flex

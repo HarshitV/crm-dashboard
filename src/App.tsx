@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazy, useCallback, useEffect } from "react";
 import { useUserStore } from "./store/useUserStore";
 import { mockLoggedInUser } from "./data/mockLoggedInUser";
+import { MOCK_TIMEOUT_DELAY } from "./utils/constants";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Product = lazy(() => import("./pages/Product"));
@@ -19,14 +20,14 @@ export const App = () => {
   const fetchUser = useCallback(() => {
     setTimeout(() => {
       setUser(mockLoggedInUser);
-    }, 500); // Simulate API delay
+    }, MOCK_TIMEOUT_DELAY);
   }, [setUser]);
 
   useEffect(() => fetchUser(), [fetchUser]);
 
   return (
     <BrowserRouter>
-      <Flex h="100%" w="100%">
+      <Flex boxSize="100%">
         <SideMenu />
         <Flex direction="column" flex="1">
           <Routes>
