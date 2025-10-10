@@ -29,40 +29,55 @@ This project is a CRM Dashboard built with React, Chakra UI, Zustand, and TypeSc
 ## Key Technologies & Decisions
 
 ### 1. **React**
+
 - Chosen for its component-based architecture and ecosystem.
 - Uses functional components and React hooks.
 
 ### 2. **Chakra UI**
+
 - Provides accessible, themeable, and composable UI primitives.
 - Custom theme tokens are defined in [`components/ui/theme.ts`](src/components/ui/theme.ts).
 
 ### 3. **TypeScript**
+
 - Ensures type safety and better developer tooling.
 - All code is written in TypeScript for maintainability.
 
 ### 4. **Zustand**
+
 - Lightweight state management for global state (e.g., user info).
 - Used in [`store/useUserStore.ts`](src/store/useUserStore.ts).
 
 ### 5. **React Router**
+
 - Handles client-side routing.
 - Routes are defined in [`App.tsx`](src/App.tsx).
 
 ### 6. **Webpack**
+
 - Custom configuration for development and production builds.
 - Aliases (`@`) are set up for cleaner imports.
 
 ### 7. **Mock Data**
+
 - All customer and user data is mocked for development and demo purposes.
 - Located in [`data/`](src/data/).
 
 ### 8. **Custom Hooks**
+
 - Encapsulate logic for filtering, sorting, pagination, and debouncing.
 - Examples: [`useCustomersList`](src/hooks/useCustomersList.ts), [`useDebounce`](src/hooks/useDebounce.ts).
 
 ### 9. **Component-Driven Design**
+
 - UI is broken down into small, reusable components.
 - Promotes reusability and easier testing.
+
+### 10. **Storybook**
+
+- Storybook is used for developing, testing, and documenting UI components in isolation.
+- Stories are colocated with components (e.g., `*.stories.tsx` files in component folders).
+- Enables visual testing and design system documentation.
 
 ---
 
