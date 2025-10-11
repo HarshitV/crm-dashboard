@@ -22,7 +22,14 @@ export class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <Flex h="100vh" justify="center" align="center" fontSize={rem(24)}>
+        <Flex
+          h="100vh"
+          justify="center"
+          align="center"
+          fontSize={rem(24)}
+          role="alert"
+          aria-live="assertive"
+        >
           Oops something went wrong!
         </Flex>
       );
