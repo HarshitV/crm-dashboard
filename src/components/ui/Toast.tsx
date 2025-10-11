@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Flex } from "@chakra-ui/react";
 import { rem } from "@/utils/rem";
 
@@ -27,7 +27,7 @@ export const Toast = ({
       left="50%"
       transform="translateX(-50%)"
       bg={variant === "error" ? "red.500" : "gray.800"}
-      color={variant === "error" ? "white" : "white"}
+      color="white"
       p={rem(16)}
       borderRadius="md"
       zIndex={9999}

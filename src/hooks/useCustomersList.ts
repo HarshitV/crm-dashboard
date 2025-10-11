@@ -1,5 +1,5 @@
 import { Customer, mockCustomers } from "@/data/mockCustomers";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useFilteredCustomers } from "./useFilteredCustomers";
 import { useSortedCustomers } from "./useSortedCustomers";
 import { MOCK_TIMEOUT_DELAY, PAGE_SIZE } from "@/utils/constants";
@@ -18,14 +18,18 @@ export const useCustomersList = () => {
   const sorted = useSortedCustomers(filtered, sort);
   const totalPages = Math.ceil(sorted.length / PAGE_SIZE);
 
+  const paginatedCustomers = useMemo(() => {
+    const start = (page - 1) * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
+    return sorted.slice(start, end);
+  }, [sorted, page]);
+
   useEffect(() => {
     setLoading(true);
     setError(null);
     new Promise<Customer[]>((resolve) => {
       setTimeout(() => {
-        const start = (page - 1) * PAGE_SIZE;
-        const end = start + PAGE_SIZE;
-        resolve(sorted.slice(start, end));
+        resolve(paginatedCustomers);
       }, MOCK_TIMEOUT_DELAY);
     })
       .then((data) => {
@@ -38,7 +42,7 @@ export const useCustomersList = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [page, sorted]);
+  }, [paginatedCustomers]);
 
   const memoSetSearch = useCallback((v: string) => setSearch(v), []);
   const memoSetStatus = useCallback((v: string) => setStatus(v), []);

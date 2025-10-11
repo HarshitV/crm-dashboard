@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Flex } from "@chakra-ui/react";
 import { Toast } from "./components/ui/Toast";
 import { SideMenu } from "./components/SideMenu";
@@ -5,6 +6,8 @@ import { SideMenu } from "./components/SideMenu";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { lazy } from "react";
 import { useFetchUser } from "./hooks/useFetchUser";
+
+import { PageLoader } from "./components/ui/PageLoader";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Product = lazy(() => import("./pages/Product"));
@@ -29,15 +32,17 @@ export const App = () => {
       <Flex boxSize="100%">
         <SideMenu />
         <Flex direction="column" flex="1">
-          <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/product" element={<Product />} />
-            <Route path="/customers" element={<Customers />} />
-            <Route path="/income" element={<Income />} />
-            <Route path="/promote" element={<Promote />} />
-            <Route path="/help" element={<Help />} />
-            <Route path="/" element={<Dashboard />} />
-          </Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/product" element={<Product />} />
+              <Route path="/customers" element={<Customers />} />
+              <Route path="/income" element={<Income />} />
+              <Route path="/promote" element={<Promote />} />
+              <Route path="/help" element={<Help />} />
+              <Route path="/" element={<Dashboard />} />
+            </Routes>
+          </Suspense>
         </Flex>
       </Flex>
     </BrowserRouter>

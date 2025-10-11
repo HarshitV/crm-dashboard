@@ -1,9 +1,10 @@
+import React from "react";
 import { useUserStore } from "@/store/useUserStore";
 import { rem } from "@/utils/rem";
 import { Flex, Image, Text } from "@chakra-ui/react";
 import { Loader } from "./Loader";
 
-export const UserProfile = () => {
+export const UserProfile = React.memo(() => {
   const user = useUserStore((state) => state.user);
 
   if (!user) return <Loader />;
@@ -24,4 +25,6 @@ export const UserProfile = () => {
       </Flex>
     </Flex>
   );
-};
+});
+
+UserProfile.displayName = "UserProfile";

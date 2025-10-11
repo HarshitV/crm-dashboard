@@ -16,19 +16,19 @@ export const mockCustomersDashboardMock = [
   {
     header: "Total Customers",
     icon: <AllCustomers boxSize={{ base: rem(30), xl: rem(42) }} />,
-    value: 100,
+    value: 256,
     change: 16,
   },
   {
     header: "Members",
     icon: <Members boxSize={{ base: rem(28), xl: rem(40) }} />,
-    value: 59,
+    value: 129,
     change: -1,
   },
   {
     header: "Active Now",
     icon: <ActiveNow boxSize={{ base: rem(30), xl: rem(42) }} />,
-    value: 44,
+    value: 123,
     avatars,
   },
 ];

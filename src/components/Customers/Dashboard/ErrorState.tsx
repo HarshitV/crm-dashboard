@@ -10,9 +10,9 @@ export const DashboardErrorState = ({ error }: { error: string }) => (
     borderRadius={rem(30)}
     px={rem(50)}
     py={rem(30)}
-    boxShadow={`0 0 ${rem(10)} 0 #E2ECF9`}
+    boxShadow={`0 0 ${rem(10)} 0 var(--chakra-colors-border-main)`}
   >
-    <Text color="#D0004B" fontWeight="bold" fontSize={rem(18)}>
+    <Text color="error-main" fontWeight="bold" fontSize={rem(18)}>
       {error}
     </Text>
   </Flex>

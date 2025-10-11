@@ -3,38 +3,39 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 import { MenuItems } from "./MenuItems";
 import { UserProfile } from "./UserProfile";
 import { Setting } from "@/icons/Setting";
+import React from "react";
 
-export const SideMenu = () => {
-  return (
-    <Box
-      display={{ base: "none", md: "block" }}
-      w="40%"
-      h="100%"
-      bg="white"
-      shadow="md"
-      px={rem(28)}
-      py={rem(36)}
-      position="fixed"
-      top={0}
-      left={0}
-      color="black"
-      minW={rem(260)}
-      maxW={rem(306)}
-      overflowY="auto"
-    >
-      <Flex alignItems={"flex-end"} gap={rem(4)} mb={rem(60)}>
-        <Flex gap={rem(8)}>
-          <Setting />
-          <Text fontSize={rem(26)} fontWeight={600}>
-            Dashboard
-          </Text>
-        </Flex>
-        <Text position="relative" bottom={rem(5)} fontSize={rem(10)}>
-          v.01
+export const SideMenu = React.memo(() => (
+  <Box
+    display={{ base: "none", md: "block" }}
+    w="40%"
+    h="100%"
+    bg="white"
+    shadow="md"
+    px={rem(28)}
+    py={rem(36)}
+    position="fixed"
+    top={0}
+    left={0}
+    color="black"
+    minW={rem(260)}
+    maxW={rem(306)}
+    overflowY="auto"
+  >
+    <Flex alignItems={"flex-end"} gap={rem(4)} mb={rem(60)}>
+      <Flex gap={rem(8)}>
+        <Setting />
+        <Text fontSize={rem(26)} fontWeight={600}>
+          Dashboard
         </Text>
       </Flex>
-      <MenuItems />
-      <UserProfile />
-    </Box>
-  );
-};
+      <Text position="relative" bottom={rem(5)} fontSize={rem(10)}>
+        v.01
+      </Text>
+    </Flex>
+    <MenuItems />
+    <UserProfile />
+  </Box>
+));
+
+SideMenu.displayName = "SideMenu";

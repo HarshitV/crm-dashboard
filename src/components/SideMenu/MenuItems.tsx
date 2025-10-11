@@ -1,10 +1,11 @@
 import { sideMenuItems } from "@/utils/constants";
 import { rem } from "@/utils/rem";
 import { Box, Button, Flex } from "@chakra-ui/react";
+import React from "react";
 import { BiChevronRight } from "react-icons/bi";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export const MenuItems = () => {
+export const MenuItems = React.memo(() => {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,8 +24,8 @@ export const MenuItems = () => {
               fontWeight={500}
               fontSize={rem(14)}
               variant={isActive ? "solid" : "ghost"}
-              color={isActive ? "white" : "text-secondary"}
-              bg={isActive ? "#5932EA" : "transparent"}
+              color={isActive ? "button-primary-text" : "text-secondary"}
+              bg={isActive ? "brand-primary" : "transparent"}
               _hover={
                 !isActive
                   ? {
@@ -37,7 +38,9 @@ export const MenuItems = () => {
               px={rem(10)}
             >
               <Flex w="100%" gap={rem(14)} align="center">
-                <Icon fill={isActive ? "white" : "#9197B3"} />
+                <Icon
+                  fill={isActive ? "button-primary-text" : "text-secondary"}
+                />
                 {name}
                 {hasSubMenu && (
                   <Box as="span" ml="auto">
@@ -51,4 +54,6 @@ export const MenuItems = () => {
       })}
     </Flex>
   );
-};
+});
+
+MenuItems.displayName = "MenuItems";

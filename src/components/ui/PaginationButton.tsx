@@ -13,8 +13,8 @@ export const PaginationButton = ({
     size="2xs"
     p={0}
     borderRadius={rem(4)}
-    bg={active ? "#5A32EA" : "#F5F5F5"}
-    color={active ? "#fff" : "#404B52"}
+    bg={active ? "brand-primary" : "button-secondary-bg"}
+    color={active ? "button-primary-text" : "button-secondary-text"}
     fontSize={rem(12)}
     fontWeight="500"
     {...props}

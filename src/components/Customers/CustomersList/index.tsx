@@ -42,7 +42,7 @@ export const CustomersList = () => {
             <Table.Row>
               <Table.ColumnHeader color="#B5B7C0">
                 {loading ? (
-                  <Skeleton height="20px" width="120px" />
+                  <Skeleton h={rem(20)} w={rem(120)} />
                 ) : (
                   "Customer Name"
                 )}
@@ -51,14 +51,14 @@ export const CustomersList = () => {
                 color="#B5B7C0"
                 display={{ base: "none", lg: "table-cell" }}
               >
-                {loading ? <Skeleton height="20px" width="100px" /> : "Company"}
+                {loading ? <Skeleton h={rem(20)} w={rem(100)} /> : "Company"}
               </Table.ColumnHeader>
               <Table.ColumnHeader
                 color="#B5B7C0"
                 display={{ base: "none", md: "table-cell" }}
               >
                 {loading ? (
-                  <Skeleton height="20px" width="110px" />
+                  <Skeleton h={rem(20)} w={rem(110)} />
                 ) : (
                   "Phone Number"
                 )}
@@ -67,16 +67,16 @@ export const CustomersList = () => {
                 color="#B5B7C0"
                 display={{ base: "none", xl: "table-cell" }}
               >
-                {loading ? <Skeleton height="20px" width="120px" /> : "Email"}
+                {loading ? <Skeleton h={rem(20)} w={rem(120)} /> : "Email"}
               </Table.ColumnHeader>
               <Table.ColumnHeader
                 color="#B5B7C0"
                 display={{ base: "none", xl: "table-cell" }}
               >
-                {loading ? <Skeleton height="20px" width="90px" /> : "Country"}
+                {loading ? <Skeleton h={rem(20)} w={rem(90)} /> : "Country"}
               </Table.ColumnHeader>
               <Table.ColumnHeader color="#B5B7C0">
-                {loading ? <Skeleton height="20px" width="70px" /> : "Status"}
+                {loading ? <Skeleton h={rem(20)} w={rem(70)} /> : "Status"}
               </Table.ColumnHeader>
             </Table.Row>
           </Table.Header>
