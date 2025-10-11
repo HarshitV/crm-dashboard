@@ -1,6 +1,6 @@
 import { rem } from "@/utils/rem";
 import { Icon } from "@chakra-ui/react";
-import { IconProps } from "@chakra-ui/react/dist/types/components/avatar/namespace";
+import { IconProps } from "@chakra-ui/react";
 
 export const Members = ({ boxSize = rem(40) }: IconProps) => (
   <Icon boxSize={boxSize} viewBox="0 0 40 40" fill="none">

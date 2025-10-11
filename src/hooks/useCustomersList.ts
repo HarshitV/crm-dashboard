@@ -12,22 +12,32 @@ export const useCustomersList = () => {
 
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Filter and sort all customers first (simulate server-side)
   const filtered = useFilteredCustomers(mockCustomers, search, status);
   const sorted = useSortedCustomers(filtered, sort);
   const totalPages = Math.ceil(sorted.length / PAGE_SIZE);
 
   useEffect(() => {
     setLoading(true);
-    const timeout = setTimeout(() => {
-      const start = (page - 1) * PAGE_SIZE;
-      const end = start + PAGE_SIZE;
-      setCustomers(sorted.slice(start, end));
-      setLoading(false);
-    }, MOCK_TIMEOUT_DELAY);
-
-    return () => clearTimeout(timeout);
+    setError(null);
+    new Promise<Customer[]>((resolve) => {
+      setTimeout(() => {
+        const start = (page - 1) * PAGE_SIZE;
+        const end = start + PAGE_SIZE;
+        resolve(sorted.slice(start, end));
+      }, MOCK_TIMEOUT_DELAY);
+    })
+      .then((data) => {
+        setCustomers(data);
+      })
+      .catch((err) => {
+        setError("Failed to load customers.");
+        console.error("Error in fetching customers:", err);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [page, sorted]);
 
   const memoSetSearch = useCallback((v: string) => setSearch(v), []);
@@ -38,6 +48,7 @@ export const useCustomersList = () => {
   return {
     customers,
     loading,
+    error,
     search,
     setSearch: memoSetSearch,
     status,

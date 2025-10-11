@@ -2,22 +2,20 @@ import { Flex, Skeleton } from "@chakra-ui/react";
 import { rem } from "@/utils/rem";
 
 import { Item } from "./Item";
-import React, { useEffect, useState } from "react";
-import { mockCustomersDashboardMock } from "@/data/mockCustomersDashboard";
 import { Separator } from "./Separator";
-import { MOCK_TIMEOUT_DELAY } from "@/utils/constants";
+import { DashboardErrorState } from "./ErrorState";
+import { useCustomersDashboard } from "@/hooks/useCustomersDashboard";
+import React from "react";
 
 export const CustomersDashboard = () => {
-  const [items, setItems] = useState<typeof mockCustomersDashboardMock>([]);
+  const { error, items, loading } = useCustomersDashboard();
 
-  useEffect(() => {
-    setTimeout(() => {
-      setItems(mockCustomersDashboardMock);
-    }, MOCK_TIMEOUT_DELAY);
-  }, []);
-
-  if (!items.length) {
+  if (loading) {
     return <Skeleton minH={rem(150)} borderRadius={rem(30)} />;
+  }
+
+  if (error) {
+    return <DashboardErrorState error={error} />;
   }
 
   return (

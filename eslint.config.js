@@ -1,9 +1,9 @@
-import tsPlugin, { configs } from "@typescript-eslint/eslint-plugin";
-import tsParser from "@typescript-eslint/parser";
-import { configs as _configs } from "eslint-plugin-react";
-import reactHooks from "eslint-plugin-react-hooks";
+const tsPlugin = require("@typescript-eslint/eslint-plugin");
+const tsParser = require("@typescript-eslint/parser");
+const react = require("eslint-plugin-react");
+const reactHooks = require("eslint-plugin-react-hooks");
 
-export default [
+module.exports = [
   {
     ignores: [
       "dist/**",
@@ -23,12 +23,12 @@ export default [
     },
     plugins: {
       "@typescript-eslint": tsPlugin,
-      React,
+      react,
       "react-hooks": reactHooks,
     },
     rules: {
-      ...configs.recommended.rules,
-      ..._configs.recommended.rules,
+      ...tsPlugin.configs.recommended.rules,
+      ...react.configs.recommended.rules,
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "react/react-in-jsx-scope": "off",

@@ -6,10 +6,12 @@ import { LoadingState } from "./LoadingState";
 import { EmptyState } from "./EmptyState";
 import { Footer } from "./Footer";
 import { CustomerRow } from "./CustomerRow";
+import { ErrorState } from "./ErrorState";
 
 export const CustomersList = () => {
   const {
     loading,
+    error,
     search,
     setSearch,
     status,
@@ -79,7 +81,9 @@ export const CustomersList = () => {
             </Table.Row>
           </Table.Header>
           <TableBody h={rem(440)}>
-            {loading ? (
+            {error ? (
+              <ErrorState error={error} />
+            ) : loading ? (
               <LoadingState />
             ) : customers.length === 0 ? (
               <EmptyState />
