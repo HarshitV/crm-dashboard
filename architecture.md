@@ -35,6 +35,26 @@
   - `useFilteredCustomers`, `useSortedCustomers`, `usePaginatedCustomers` encapsulate logic for each concern.
 - **Error Handling**: Minimal, as data is static. UI states for loading/empty/error are simulated via component props and stories.
 
+## UI States
+
+- **Loading States**: All major data-fetching components (e.g., customers list, dashboard cards, user profile) display skeletons or spinners while loading mock data. Loading is simulated using timeouts.
+- **Error States**: Components display user-friendly error messages if mock data fetching fails (simulated via error boundaries or error state in hooks).
+- **Empty States**: If no data matches filters/search, empty state components are shown.
+
+## Storybook
+
+- Storybook is integrated for all UI components, including SideMenu, CustomersList, Dashboard cards, and more.
+- Stories demonstrate default, loading, error, and empty states for each component.
+- Decorators are used to provide global context (e.g., ChakraProvider, Zustand store state).
+- Storybook enables rapid visual testing and documentation for all UI states.
+
+## Performance Optimizations
+
+- **Memoization**: Hooks like `useFilteredCustomers`, `useSortedCustomers`, and `usePaginatedCustomers` use `useMemo` to avoid unnecessary recalculations.
+- **React.memo**: Row components (e.g., `CustomerRow`) are wrapped in `React.memo` to prevent unnecessary re-renders.
+- **Debouncing**: Search input uses a debounced value to reduce filtering frequency and improve perceived performance.
+- **Pagination**: Only the current page of customers is rendered, reducing DOM size and improving responsiveness.
+
 ## Approach
 
 - **Separation of Concerns**: UI (components), logic (hooks), and data (mock) are strictly separated.
@@ -48,3 +68,4 @@
 - [React Documentation](https://react.dev/)
 - [Zustand Documentation](https://docs.pmnd.rs/zustand/getting-started/introduction)
 - [Webpack Documentation](https://webpack.js.org/concepts/)
+- [Storybook Documentation](https://storybook.js.org/docs)
