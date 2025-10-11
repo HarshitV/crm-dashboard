@@ -25,23 +25,20 @@ export const useCustomersList = () => {
   }, [sorted, page]);
 
   useEffect(() => {
-    setLoading(true);
-    setError(null);
-    new Promise<Customer[]>((resolve) => {
-      setTimeout(() => {
-        resolve(paginatedCustomers);
-      }, MOCK_TIMEOUT_DELAY);
-    })
-      .then((data) => {
-        setCustomers(data);
-      })
-      .catch((err) => {
+    const fetchCustomers = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        await new Promise((resolve) => setTimeout(resolve, MOCK_TIMEOUT_DELAY));
+        setCustomers(paginatedCustomers);
+      } catch (err) {
         setError("Failed to load customers.");
         console.error("Error in fetching customers:", err);
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
+      }
+    };
+    fetchCustomers();
   }, [paginatedCustomers]);
 
   const memoSetSearch = useCallback((v: string) => setSearch(v), []);
