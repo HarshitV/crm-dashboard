@@ -1,7 +1,7 @@
+import { Search } from "@/components/ui/Search";
 import { useHeaderRight } from "@/hooks/useHeaderRight";
 import { rem } from "@/utils/rem";
-import { Flex, Input } from "@chakra-ui/react";
-import { FiSearch } from "react-icons/fi";
+import { Flex } from "@chakra-ui/react";
 
 interface Props {
   search: string;
@@ -26,24 +26,7 @@ export const HeaderRight = ({
 
   return (
     <Flex gap={rem(16)} h={rem(38)}>
-      <Flex
-        align="center"
-        bg="#F9FBFF"
-        borderRadius={rem(10)}
-        p={rem(7)}
-        w={{ base: rem(150), xl: rem(215) }}
-        _focusWithin={{ boxShadow: "0 0 0 1px #2684FF" }}
-      >
-        <FiSearch color="#7E7E7E" size={rem(16)} />
-        <Input
-          id="customer-search"
-          placeholder="Search"
-          value={search}
-          onChange={handleSearchChange}
-          border="none"
-          _focusVisible={{ border: "none", outlineWidth: "inherit" }}
-        />
-      </Flex>
+      <Search value={search} onChange={handleSearchChange} />
       <Flex
         flex={1}
         bg="white"

@@ -10,7 +10,7 @@ export const MenuItems = React.memo(() => {
   const location = useLocation();
 
   return (
-    <Flex direction="column" gap={rem(6)} px={rem(12)} mb="10%">
+    <Flex direction="column" gap={rem(6)} px={rem(12)} mb="25%">
       {sideMenuItems.map((item) => {
         const isActive = [item.link, item.subLink].includes(location.pathname);
         const { icon: Icon, hasSubMenu, link, name } = item;
@@ -38,9 +38,7 @@ export const MenuItems = React.memo(() => {
               px={rem(10)}
             >
               <Flex w="100%" gap={rem(14)} align="center">
-                <Icon
-                  fill={isActive ? "button-primary-text" : "text-secondary"}
-                />
+                <Icon fill={isActive ? "#fff" : "#9197B3"} />
                 {name}
                 {hasSubMenu && (
                   <Box as="span" ml="auto">

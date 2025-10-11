@@ -1,7 +1,6 @@
-import { MemoryRouter } from "react-router-dom";
-import { SideMenu } from "./index";
-import { useUserStore } from "@/store/useUserStore";
 import { mockLoggedInUser } from "@/data/mockLoggedInUser";
+import { Topnav } from ".";
+import { useUserStore } from "@/store/useUserStore";
 import type { Decorator } from "@storybook/react";
 
 const StoreDecorator: Decorator = (Story) => {
@@ -10,13 +9,9 @@ const StoreDecorator: Decorator = (Story) => {
 };
 
 export default {
-  title: "SideMenu",
-  component: SideMenu,
+  title: "ui/Topnav",
+  component: Topnav,
   decorators: [StoreDecorator],
 };
 
-export const Default = () => (
-  <MemoryRouter>
-    <SideMenu />
-  </MemoryRouter>
-);
+export const Default = () => <Topnav />;

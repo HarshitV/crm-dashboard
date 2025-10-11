@@ -21,7 +21,9 @@ export const system = createSystem(defaultConfig, {
         "border-main": { value: "#E2ECF9" },
         "border-table-separator": { value: "#F0F0F0" },
         // Status
-        "status-active-bg": { value: "#16C09861" },
+        "status-active-bg": {
+          value: "linear-gradient(#D3FFE7, #EFFFF6)",
+        },
         "status-active-border": { value: "#00B087" },
         "status-active-text": { value: "#008767" },
         "status-inactive-bg": { value: "#FFC5C5" },
