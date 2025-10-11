@@ -50,7 +50,7 @@
 
 ## Performance Optimizations
 
-- **Memoization**: Hooks like `useFilteredCustomers`, `useSortedCustomers`, and `usePaginatedCustomers` use `useMemo` to avoid unnecessary recalculations.
+- **Memoization**: Hooks like `useFilteredCustomers`, and `useSortedCustomers` use `useMemo` to avoid unnecessary recalculations.
 - **React.memo**: Row components (e.g., `CustomerRow`) are wrapped in `React.memo` to prevent unnecessary re-renders.
 - **Debouncing**: Search input uses a debounced value to reduce filtering frequency and improve perceived performance.
 - **Pagination**: Only the current page of customers is rendered, reducing DOM size and improving responsiveness.

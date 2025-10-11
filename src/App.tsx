@@ -9,6 +9,8 @@ import { useFetchUser } from "./hooks/useFetchUser";
 
 import { PageLoader } from "./components/ui/PageLoader";
 
+import { ErrorBoundary } from "./components/ui/ErrorBoundary";
+
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Product = lazy(() => import("./pages/Product"));
 const Customers = lazy(() => import("./pages/Customers"));
@@ -20,31 +22,33 @@ export const App = () => {
   const { error, setError } = useFetchUser();
 
   return (
-    <BrowserRouter>
-      {error && (
-        <Toast
-          message={error}
-          onClose={() => setError(null)}
-          duration={3000}
-          variant="error"
-        />
-      )}
-      <Flex boxSize="100%">
-        <SideMenu />
-        <Flex direction="column" flex="1">
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/product" element={<Product />} />
-              <Route path="/customers" element={<Customers />} />
-              <Route path="/income" element={<Income />} />
-              <Route path="/promote" element={<Promote />} />
-              <Route path="/help" element={<Help />} />
-              <Route path="/" element={<Dashboard />} />
-            </Routes>
-          </Suspense>
+    <ErrorBoundary>
+      <BrowserRouter>
+        {error && (
+          <Toast
+            message={error}
+            onClose={() => setError(null)}
+            duration={3000}
+            variant="error"
+          />
+        )}
+        <Flex boxSize="100%">
+          <SideMenu />
+          <Flex direction="column" flex="1">
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/product" element={<Product />} />
+                <Route path="/customers" element={<Customers />} />
+                <Route path="/income" element={<Income />} />
+                <Route path="/promote" element={<Promote />} />
+                <Route path="/help" element={<Help />} />
+                <Route path="/" element={<Dashboard />} />
+              </Routes>
+            </Suspense>
+          </Flex>
         </Flex>
-      </Flex>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 };

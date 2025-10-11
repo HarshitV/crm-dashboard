@@ -1,6 +1,6 @@
-import { Customer } from "@/data/mockCustomers";
 import { useMemo } from "react";
 import { useDebounce } from "./useDebounce";
+import { Customer } from "@/utils/types";
 
 export function useFilteredCustomers(
   customers: Customer[],
@@ -20,7 +20,7 @@ export function useFilteredCustomers(
       );
     }
     if (status) {
-      data = data.filter((c: Customer) => c.status === status);
+      data = data.filter((c) => c.status === status);
     }
     return data;
   }, [customers, debouncedSearch, status]);

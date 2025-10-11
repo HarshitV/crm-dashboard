@@ -1,4 +1,4 @@
-import { Customer } from "@/data/mockCustomers";
+import { Customer } from "@/utils/types";
 import { useMemo } from "react";
 
 export function useSortedCustomers(

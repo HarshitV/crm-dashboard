@@ -1,6 +1,6 @@
-import { Customer } from "@/data/mockCustomers";
 import { getStatusProps } from "@/utils/helpers";
 import { rem } from "@/utils/rem";
+import { Customer } from "@/utils/types";
 import { TableRow, Table, Flex } from "@chakra-ui/react";
 import React from "react";
 

@@ -1,5 +1,5 @@
-import { Customer } from "@/data/mockCustomers";
 import { rem } from "./rem";
+import { Customer } from "./types";
 
 export const getStatusProps = (status: Customer["status"]) => {
   if (status === "active") {

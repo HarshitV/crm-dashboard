@@ -1,12 +1,4 @@
-export type Customer = {
-  id: number;
-  name: string;
-  company: string;
-  phone: string;
-  email: string;
-  country: string;
-  status: "active" | "inactive";
-};
+import { Customer } from "@/utils/types";
 
 export const mockCustomers: Customer[] = Array.from(
   { length: 256 },

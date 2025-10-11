@@ -1,8 +1,9 @@
-import { Customer, mockCustomers } from "@/data/mockCustomers";
+import { mockCustomers } from "@/data/mockCustomers";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useFilteredCustomers } from "./useFilteredCustomers";
 import { useSortedCustomers } from "./useSortedCustomers";
 import { MOCK_TIMEOUT_DELAY, PAGE_SIZE } from "@/utils/constants";
+import { Customer } from "@/utils/types";
 
 export const useCustomersList = () => {
   const [search, setSearch] = useState("");
