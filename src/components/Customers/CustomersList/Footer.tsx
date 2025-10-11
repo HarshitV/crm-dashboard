@@ -12,7 +12,7 @@ interface Props {
 
 export const Footer = ({ sorted, page, totalPages, setPage }: Props) => (
   <Flex justify="space-between" align="center" mt={6} gap={2} flexWrap="wrap">
-    <Text fontSize="sm" color="#B5B7C0">
+    <Text fontSize="sm" color="text-table-header">
       {(() => {
         const total = sorted.length;
         const start = total === 0 ? 0 : (page - 1) * PAGE_SIZE + 1;

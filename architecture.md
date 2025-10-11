@@ -1,108 +1,71 @@
-# Architecture & Technical Decisions
+# CRM Dashboard Architecture Outline
 
-## Overview
+## Goals
 
-This project is a CRM Dashboard built with React, Chakra UI, Zustand, and TypeScript. It features a modular, component-driven architecture with a focus on maintainability, scalability, and developer experience.
+- Build a modular, maintainable CRM dashboard UI for customer management.
+- Enable rapid prototyping and easy component testing with Storybook.
+- Prioritize developer experience, scalability, and clean code separation.
 
----
+## Non-goals
 
-## Folder Structure
+- No real backend/API integration (mock data only).
+- No authentication/authorization.
+- No production deployment or CI/CD setup.
 
-- **public/**: Static assets and the main HTML entry point.
-- **src/**
-  - **App.tsx**: Main application entry, sets up routing and layout.
-  - **index.tsx**: React root, ChakraProvider, and global styles.
-  - **components/**: Reusable UI and feature components.
-    - **Customers/**: Customer dashboard and list components.
-    - **SideMenu/**: Sidebar navigation and user profile.
-    - **ui/**: Generic UI elements (pagination, wrappers, etc.).
-  - **data/**: Mock data for customers and user.
-  - **hooks/**: Custom React hooks for state and logic (pagination, filtering, etc.).
-  - **icons/**: Custom SVG icon components.
-  - **images/**: Static image assets.
-  - **pages/**: Route-level page components.
-  - **store/**: Zustand stores for global state (e.g., user).
-  - **utils/**: Utility functions and constants.
+## Tech Stack
 
----
+- **React** (functional components, hooks)
+- **TypeScript** (type safety)
+- **Chakra UI** (accessible, themeable design system)
+- **Zustand** (lightweight global state)
+- **Storybook** (UI development/testing)
+- **Webpack** (custom build config)
 
-## Key Technologies & Decisions
+## Design System
 
-### 1. **React**
+- Chakra UI for all layout, spacing, color, and typography primitives.
+- Custom theme tokens in `src/components/ui/theme.ts` for brand consistency.
+- Component-driven: all UI is split into small, reusable, isolated components.
+- Storybook stories colocated with components for visual testing and documentation.
 
-- Chosen for its component-based architecture and ecosystem.
-- Uses functional components and React hooks.
+## Data Layer
 
-### 2. **Chakra UI**
+- **Mock Strategy**: All data (customers, user) is static and lives in `src/data/` for fast iteration.
+- **Sorting/Filtering/Pagination**: Handled on the client using custom React hooks (`src/hooks/`).
+  - `useFilteredCustomers`, `useSortedCustomers`, `usePaginatedCustomers` encapsulate logic for each concern.
+- **Error Handling**: Minimal, as data is static. UI states for loading/empty/error are simulated via component props and stories.
 
-- Provides accessible, themeable, and composable UI primitives.
-- Custom theme tokens are defined in [`components/ui/theme.ts`](src/components/ui/theme.ts).
+## UI States
 
-### 3. **TypeScript**
+- **Loading States**: All major data-fetching components (e.g., customers list, dashboard cards, user profile) display skeletons or spinners while loading mock data. Loading is simulated using timeouts.
+- **Error States**: Components display user-friendly error messages if mock data fetching fails (simulated via error boundaries or error state in hooks).
+- **Empty States**: If no data matches filters/search, empty state components are shown.
 
-- Ensures type safety and better developer tooling.
-- All code is written in TypeScript for maintainability.
+## Storybook
 
-### 4. **Zustand**
+- Storybook is integrated for all UI components, including SideMenu, CustomersList, Dashboard cards, and more.
+- Stories demonstrate default, loading, error, and empty states for each component.
+- Decorators are used to provide global context (e.g., ChakraProvider, Zustand store state).
+- Storybook enables rapid visual testing and documentation for all UI states.
 
-- Lightweight state management for global state (e.g., user info).
-- Used in [`store/useUserStore.ts`](src/store/useUserStore.ts).
+## Performance Optimizations
 
-### 5. **React Router**
+- **Memoization**: Hooks like `useFilteredCustomers`, `useSortedCustomers`, and `usePaginatedCustomers` use `useMemo` to avoid unnecessary recalculations.
+- **React.memo**: Row components (e.g., `CustomerRow`) are wrapped in `React.memo` to prevent unnecessary re-renders.
+- **Debouncing**: Search input uses a debounced value to reduce filtering frequency and improve perceived performance.
+- **Pagination**: Only the current page of customers is rendered, reducing DOM size and improving responsiveness.
 
-- Handles client-side routing.
-- Routes are defined in [`App.tsx`](src/App.tsx).
+## Approach
 
-### 6. **Webpack**
-
-- Custom configuration for development and production builds.
-- Aliases (`@`) are set up for cleaner imports.
-
-### 7. **Mock Data**
-
-- All customer and user data is mocked for development and demo purposes.
-- Located in [`data/`](src/data/).
-
-### 8. **Custom Hooks**
-
-- Encapsulate logic for filtering, sorting, pagination, and debouncing.
-- Examples: [`useCustomersList`](src/hooks/useCustomersList.ts), [`useDebounce`](src/hooks/useDebounce.ts).
-
-### 9. **Component-Driven Design**
-
-- UI is broken down into small, reusable components.
-- Promotes reusability and easier testing.
-
-### 10. **Storybook**
-
-- Storybook is used for developing, testing, and documenting UI components in isolation.
-- Stories are colocated with components (e.g., `*.stories.tsx` files in component folders).
-- Enables visual testing and design system documentation.
-
----
-
-## Design Patterns & Conventions
-
-- **Separation of Concerns**: Logic (hooks), UI (components), and data (mock/data) are separated.
-- **Responsive Design**: Chakra UI's responsive props are used for layout and sizing.
-- **Theming**: Centralized theme tokens for colors and spacing.
-- **Lazy Loading**: Pages are lazy-loaded for performance.
-- **Testing**: (To be added) Placeholder for future unit/integration tests.
-
----
-
-## Future Improvements
-
-- Replace mock data with real API integration.
-- Add authentication and authorization.
-- Implement unit and integration tests.
-- Enhance accessibility and internationalization.
-
----
+- **Separation of Concerns**: UI (components), logic (hooks), and data (mock) are strictly separated.
+- **Responsive Design**: Chakra UI's responsive props ensure mobile-friendly layouts.
+- **Global State**: Only user info is global (via Zustand); most state is local/component-level.
+- **Testing**: Storybook for visual/unit testing of components in isolation. (Automated tests: future work.)
 
 ## References
 
-- [Chakra UI Documentation](https://chakra-ui.com/)
-- [React Router Documentation](https://reactrouter.com/)
+- [Chakra UI Documentation](https://chakra-ui.com/docs)
+- [React Documentation](https://react.dev/)
 - [Zustand Documentation](https://docs.pmnd.rs/zustand/getting-started/introduction)
-- [Webpack Documentation](https://webpack.js.org/)
+- [Webpack Documentation](https://webpack.js.org/concepts/)
+- [Storybook Documentation](https://storybook.js.org/docs)

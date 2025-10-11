@@ -9,7 +9,7 @@ export type Customer = {
 };
 
 export const mockCustomers: Customer[] = Array.from(
-  { length: 100 },
+  { length: 256 },
   (_, i) => ({
     id: i + 1,
     name: `Customer ${i + 1}`,

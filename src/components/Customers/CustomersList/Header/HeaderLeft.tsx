@@ -12,13 +12,13 @@ export const HeaderLeft = ({ status, setStatus, setPage }: Props) => (
     <Text
       fontSize={{ base: rem(18), md: rem(22) }}
       fontWeight={600}
-      color="#000"
+      color="text-main"
     >
       All Customers
     </Text>
     <Text
       as="button"
-      color="#16C098"
+      color="brand-accent"
       fontSize={rem(14)}
       background="none"
       border="none"

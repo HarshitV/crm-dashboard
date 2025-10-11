@@ -1,5 +1,5 @@
 import { Customer, mockCustomers } from "@/data/mockCustomers";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useFilteredCustomers } from "./useFilteredCustomers";
 import { useSortedCustomers } from "./useSortedCustomers";
 import { MOCK_TIMEOUT_DELAY, PAGE_SIZE } from "@/utils/constants";
@@ -12,23 +12,34 @@ export const useCustomersList = () => {
 
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Filter and sort all customers first (simulate server-side)
   const filtered = useFilteredCustomers(mockCustomers, search, status);
   const sorted = useSortedCustomers(filtered, sort);
   const totalPages = Math.ceil(sorted.length / PAGE_SIZE);
 
-  useEffect(() => {
-    setLoading(true);
-    const timeout = setTimeout(() => {
-      const start = (page - 1) * PAGE_SIZE;
-      const end = start + PAGE_SIZE;
-      setCustomers(sorted.slice(start, end));
-      setLoading(false);
-    }, MOCK_TIMEOUT_DELAY);
+  const paginatedCustomers = useMemo(() => {
+    const start = (page - 1) * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
+    return sorted.slice(start, end);
+  }, [sorted, page]);
 
-    return () => clearTimeout(timeout);
-  }, [page, sorted]);
+  useEffect(() => {
+    const fetchCustomers = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        await new Promise((resolve) => setTimeout(resolve, MOCK_TIMEOUT_DELAY));
+        setCustomers(paginatedCustomers);
+      } catch (err) {
+        setError("Failed to load customers.");
+        console.error("Error in fetching customers:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCustomers();
+  }, [paginatedCustomers]);
 
   const memoSetSearch = useCallback((v: string) => setSearch(v), []);
   const memoSetStatus = useCallback((v: string) => setStatus(v), []);
@@ -38,6 +49,7 @@ export const useCustomersList = () => {
   return {
     customers,
     loading,
+    error,
     search,
     setSearch: memoSetSearch,
     status,
