@@ -34,10 +34,10 @@ export const HeaderLeft = ({ status, setStatus, setPage }: Props) => (
       }}
     >
       {status === "active"
-        ? "Active Members"
-        : status === "inactive"
         ? "Inactive Members"
-        : "All Members"}
+        : status === "inactive"
+        ? "All Members"
+        : "Active Members"}
     </Text>
   </Flex>
 );

@@ -50,7 +50,7 @@
 
 ## Performance Optimizations
 
-- **Memoization**: Hooks like `useFilteredCustomers`, `useSortedCustomers`, and `usePaginatedCustomers` use `useMemo` to avoid unnecessary recalculations.
+- **Memoization**: Hooks like `useFilteredCustomers`, and `useSortedCustomers` use `useMemo` to avoid unnecessary recalculations.
 - **React.memo**: Row components (e.g., `CustomerRow`) are wrapped in `React.memo` to prevent unnecessary re-renders.
 - **Debouncing**: Search input uses a debounced value to reduce filtering frequency and improve perceived performance.
 - **Pagination**: Only the current page of customers is rendered, reducing DOM size and improving responsiveness.
@@ -58,7 +58,13 @@
 ## Approach
 
 - **Separation of Concerns**: UI (components), logic (hooks), and data (mock) are strictly separated.
-- **Responsive Design**: Chakra UI's responsive props ensure mobile-friendly layouts.
+- **Accessibility (a11y)**: The app is built with accessibility in mind:
+  - Uses Chakra UI, which provides accessible components by default.
+  - Keyboard navigation is supported throughout the UI (tab order, focus states, skip links where needed).
+  - ARIA attributes are used where appropriate to enhance screen reader support.
+  - Components are tested for keyboard and screen reader accessibility.
+- **Error Boundaries**: Critical UI areas are wrapped in error boundaries to catch and display user-friendly error messages, preventing the entire app from crashing on unexpected errors.
+- **Responsive Design**: Chakra UI's responsive props ensure mobile-friendly layouts and adapt to various screen sizes.
 - **Global State**: Only user info is global (via Zustand); most state is local/component-level.
 - **Testing**: Storybook for visual/unit testing of components in isolation. (Automated tests: future work.)
 

@@ -10,7 +10,7 @@ export const UserProfile = React.memo(() => {
   if (!user) return <Loader />;
 
   return (
-    <Flex position="fixed" bottom="10%" gap={rem(8)}>
+    <Flex position="fixed" bottom="10%" gap={rem(8)} bg="white">
       <Image
         src={user.image}
         alt="User img"

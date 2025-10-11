@@ -37,10 +37,15 @@ export const CustomersList = () => {
         setPage={setPage}
       />
       <Box bg="white" borderRadius={rem(12)} boxShadow="md" overflowX="auto">
-        <Table.Root variant="line" border="none" boxShadow="none">
+        <Table.Root
+          variant="line"
+          border="none"
+          boxShadow="none"
+          aria-label="Customers table"
+        >
           <Table.Header>
             <Table.Row>
-              <Table.ColumnHeader color="#B5B7C0">
+              <Table.ColumnHeader color="#B5B7C0" scope="col">
                 {loading ? (
                   <Skeleton h={rem(20)} w={rem(120)} />
                 ) : (
@@ -50,12 +55,14 @@ export const CustomersList = () => {
               <Table.ColumnHeader
                 color="#B5B7C0"
                 display={{ base: "none", lg: "table-cell" }}
+                scope="col"
               >
                 {loading ? <Skeleton h={rem(20)} w={rem(100)} /> : "Company"}
               </Table.ColumnHeader>
               <Table.ColumnHeader
                 color="#B5B7C0"
                 display={{ base: "none", md: "table-cell" }}
+                scope="col"
               >
                 {loading ? (
                   <Skeleton h={rem(20)} w={rem(110)} />
@@ -66,21 +73,23 @@ export const CustomersList = () => {
               <Table.ColumnHeader
                 color="#B5B7C0"
                 display={{ base: "none", xl: "table-cell" }}
+                scope="col"
               >
                 {loading ? <Skeleton h={rem(20)} w={rem(120)} /> : "Email"}
               </Table.ColumnHeader>
               <Table.ColumnHeader
                 color="#B5B7C0"
                 display={{ base: "none", xl: "table-cell" }}
+                scope="col"
               >
                 {loading ? <Skeleton h={rem(20)} w={rem(90)} /> : "Country"}
               </Table.ColumnHeader>
-              <Table.ColumnHeader color="#B5B7C0">
+              <Table.ColumnHeader color="#B5B7C0" scope="col">
                 {loading ? <Skeleton h={rem(20)} w={rem(70)} /> : "Status"}
               </Table.ColumnHeader>
             </Table.Row>
           </Table.Header>
-          <TableBody h={rem(440)}>
+          <TableBody h={rem(440)} aria-live="polite">
             {error ? (
               <ErrorState error={error} />
             ) : loading ? (
