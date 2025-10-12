@@ -17,7 +17,7 @@ interface Props {
 export const Header = React.memo(
   ({ status, search, sort, setStatus, setSearch, setSort, setPage }: Props) => {
     return (
-      <Flex justify="space-between" align="center" mb={rem(32)} gap={rem(4)}>
+      <Flex justify="space-between" align="center" gap={rem(4)}>
         <HeaderLeft status={status} setStatus={setStatus} setPage={setPage} />
         <HeaderRight
           search={search}

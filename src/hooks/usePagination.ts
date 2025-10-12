@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 
+// Custom hook to generate pagination array based on current page and total pages
 export function usePagination(currentPage: number, totalPages: number) {
   return useMemo(() => {
     if (totalPages <= 7) {

@@ -1,6 +1,6 @@
 # CRM Dashboard
 
-A simple CRM dashboard built with React and TypeScript.
+A simple CRM dashboard built with React and TypeScript for OpenEnvoy.
 
 ## Getting Started
 
@@ -16,6 +16,15 @@ A simple CRM dashboard built with React and TypeScript.
    ```sh
    npm run storybook
    ```
+
+## Linting & Formatting
+
+To check code quality and automatically fix formatting issues, use:
+
+```sh
+npm run lint      # Check for lint errors
+npm run format    # Fix lint and formatting issues automatically
+```
 
 ## Project Structure
 

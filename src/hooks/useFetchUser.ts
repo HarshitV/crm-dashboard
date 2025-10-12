@@ -3,6 +3,7 @@ import { useUserStore } from "@/store/useUserStore";
 import { MOCK_TIMEOUT_DELAY } from "@/utils/constants";
 import { useCallback, useEffect, useState } from "react";
 
+// Custom hook to fetch and manage user data
 export const useFetchUser = () => {
   const setUser = useUserStore((state) => state.setUser);
   const [error, setError] = useState<string | null>(null);

@@ -13,7 +13,7 @@ interface Props {
 
 export const Footer = React.memo(
   ({ sorted, page, totalPages, setPage }: Props) => (
-    <Flex justify="space-between" align="center" mt={6} gap={2} flexWrap="wrap">
+    <Flex justify="space-between" align="center" gap={2} flexWrap="wrap">
       <Text fontSize="sm" color="text-table-header">
         {(() => {
           const total = sorted.length;
