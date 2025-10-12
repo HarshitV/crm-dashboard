@@ -1,4 +1,4 @@
-import { Box, Skeleton, Table, TableBody } from "@chakra-ui/react";
+import { Box, Flex, Skeleton, Table, TableBody } from "@chakra-ui/react";
 import { rem } from "@/utils/rem";
 import { Header } from "./Header";
 import { useCustomersList } from "@/hooks/useCustomersList";
@@ -26,7 +26,13 @@ export const CustomersList = () => {
   } = useCustomersList();
 
   return (
-    <Box bg="white" p={{ base: rem(20), md: rem(32) }} borderRadius={rem(30)}>
+    <Flex
+      direction="column"
+      bg="white"
+      p={{ base: rem(20), md: rem(32) }}
+      borderRadius={rem(30)}
+      gap={rem(32)}
+    >
       <Header
         status={status}
         search={search}
@@ -108,6 +114,6 @@ export const CustomersList = () => {
         totalPages={totalPages}
         setPage={setPage}
       />
-    </Box>
+    </Flex>
   );
 };

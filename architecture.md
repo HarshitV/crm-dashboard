@@ -32,7 +32,7 @@
 
 - **Mock Strategy**: All data (customers, user) is static and lives in `src/data/` for fast iteration.
 - **Sorting/Filtering/Pagination**: Handled on the client using custom React hooks (`src/hooks/`).
-  - `useFilteredCustomers`, `useSortedCustomers`, `usePaginatedCustomers` encapsulate logic for each concern.
+  - `useFilteredCustomers`, `useSortedCustomers`, `usePagination` encapsulate logic for each concern.
 - **Error Handling**: Minimal, as data is static. UI states for loading/empty/error are simulated via component props and stories.
 
 ## UI States

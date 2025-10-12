@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useDebounce } from "./useDebounce";
 import { Customer } from "@/utils/types";
 
+// Custom hook to filter customers based on search and status
 export function useFilteredCustomers(
   customers: Customer[],
   search: string,

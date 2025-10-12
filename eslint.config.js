@@ -10,6 +10,7 @@ module.exports = [
       "eslint.config.js",
       "webpack.config.js",
       "tsconfig.json",
+      ".storybook/**",
     ],
     files: ["**/*.{ts,tsx,js,jsx}"],
     languageOptions: {

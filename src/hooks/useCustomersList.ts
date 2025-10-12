@@ -5,6 +5,7 @@ import { useSortedCustomers } from "./useSortedCustomers";
 import { MOCK_TIMEOUT_DELAY, PAGE_SIZE } from "@/utils/constants";
 import { Customer } from "@/utils/types";
 
+// Custom hook to manage customers list with search, filter, sort, and pagination
 export const useCustomersList = () => {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("");

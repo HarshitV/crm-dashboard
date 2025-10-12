@@ -1,6 +1,7 @@
 import { Customer } from "@/utils/types";
 import { useMemo } from "react";
 
+// Custom hook to sort customers based on selected criteria
 export function useSortedCustomers(
   filtered: Customer[],
   sort: string

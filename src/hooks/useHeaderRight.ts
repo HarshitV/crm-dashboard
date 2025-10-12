@@ -6,6 +6,7 @@ interface Props {
   setPage: (v: number) => void;
 }
 
+// Custom hook to manage header right actions: search and sort
 export const useHeaderRight = ({ setSearch, setSort, setPage }: Props) => {
   const handleSearchChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

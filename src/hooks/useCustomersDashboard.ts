@@ -2,6 +2,7 @@ import { mockCustomersDashboardMock } from "@/data/mockCustomersDashboard";
 import { MOCK_TIMEOUT_DELAY } from "@/utils/constants";
 import { useEffect, useState } from "react";
 
+// Custom hook to fetch customers dashboard data
 export const useCustomersDashboard = () => {
   const [items, setItems] = useState<typeof mockCustomersDashboardMock>([]);
   const [error, setError] = useState<string | null>(null);
